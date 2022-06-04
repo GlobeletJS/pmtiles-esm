@@ -1,0 +1,39 @@
+{
+  "name": "pmtiles-esm",
+  "version": "0.0.0",
+  "description": "Retrieve and parse web map tiles from single-file PMTiles archives",
+  "main": "dist/pmtiles-esm.js",
+  "type": "module",
+  "directories": {},
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "lint": "eslint src",
+    "test": "jasmine",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GlobeletJS/pmtiles-esm.git"
+  },
+  "keywords": [
+    "map",
+    "tile",
+    "pmtiles",
+    "javascript"
+  ],
+  "author": "Jeshurun Hembd",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GlobeletJS/pmtiles-esm/issues"
+  },
+  "homepage": "https://github.com/GlobeletJS/pmtiles-esm#readme",
+  "devDependencies": {
+    "eslint": "^8.17.0",
+    "eslint-config-globeletjs": "^0.0.6",
+    "jasmine": "^4.1.0",
+    "node-fetch": "^3.2.5"
+  }
+}

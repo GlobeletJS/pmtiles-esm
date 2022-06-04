@@ -1,0 +1,6 @@
+{
+  "extends": "globeletjs",
+  "parserOptions": {
+    "ecmaVersion": 13
+  }
+}
