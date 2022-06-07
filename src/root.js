@@ -6,7 +6,7 @@ export function fetchRoot(url) {
 
   return fetch(url, { signal: controller.signal, headers })
     .then(getBuffer)
-    .then(parseRoot)
+    .then(buffer => parseRoot(buffer, url))
     .catch(error => {
       controller.abort();
       console.error(error);
@@ -20,7 +20,7 @@ function getBuffer(response) {
   throw Error("Content-Length mismatch: byte serving not supported. Aborting");
 }
 
-function parseRoot(buffer) {
+function parseRoot(buffer, url) {
   // First 10 bytes tell us how to divide the rest of the buffer
   const headerView = new DataView(buffer, 0, 10);
   const { metaLength, dirStart, dirEnd } = parseHeader(headerView);
@@ -33,7 +33,8 @@ function parseRoot(buffer) {
   const dirBuffer = buffer.slice(dirStart, dirEnd);
   const dir = new DataView(dirBuffer);
 
-  return { dir, metadata };
+  // NOTE: dir.buffer is a Transferable
+  return { dir, metadata, url };
 }
 
 function parseHeader(headerView) {
