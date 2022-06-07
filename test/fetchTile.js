@@ -20,7 +20,7 @@ function parseMVT(buffer) {
 
 fetchRoot(pmtilesUrl)
   .then(initTileGetter)
-  .then(getTile => getTile(testTile))
+  .then(getter => getter.getTile(testTile))
   .then(parseMVT)
   .then(json => console.log(JSON.stringify(json, null, 2)))
   .catch(err => console.log(err.message));
